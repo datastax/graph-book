@@ -1,0 +1,6 @@
+Customer_customer_id,Account_acct_id,role
+customer_0,acct_14,primary
+customer_1,acct_14,limited
+customer_3,acct_0,primary
+customer_2,acct_5,primary
+customer_4,acct_0,primary
