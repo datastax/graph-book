@@ -1,6 +1,23 @@
 #!/bin/bash
 
-cd /path/to/dsbulk-1.3.4/bin
+# customizable variables
+DSBULK_PATH=/path/to/dse-6.8.0_20190911-LABS/dsbulk-1.3.4
+DEST_KS=neighborhoods_dev
+
+#
+OLDWD="`pwd`"
+SCRIPTIR="`dirname $0`"
+cd "$SCRIPTDIR"
+DATADIR="`pwd`"
+
+DSBULK="`which dsbulk`"
+if [ -z "$DSBULK" ]; then
+    if [ ! -f "$DSBULK_PATH/bin/dsbulk" ]; then
+        echo "Please set DSBULK_PATH variable to top-level path of DSBulk distribution"
+        echo "  or add directory with dsbulk to PATH, like, 'PATH=...dsbulk-1.3.4/bin:\$PATH'"
+        exit 1
+    fi
+fi
 
 echo "Loading vertices into the graph neighborhoods_dev"
 
