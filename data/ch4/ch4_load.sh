@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # customizable variables
-DSBULK_PATH=/path/to/dse-6.8.0_20190911-LABS/dsbulk-1.3.4
-DEST_KS=neighborhoods_dev
+DSBULK_PATH=/Users/denisegosnell/Desktop/Book/dse-6.8.0_20190911-LABS/dsbulk-1.3.4/bin
+DEST_GRAPH=neighborhoods_dev
 
 #
 OLDWD="`pwd`"
