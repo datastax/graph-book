@@ -1,25 +1,13 @@
 #!/bin/bash
 
 # customizable variables
-DSBULK_PATH=/Users/denisegosnell/Desktop/Book/dse-6.8.0_20190911-LABS/dsbulk-1.3.4/bin
-DEST_GRAPH=neighborhoods_dev
+DSBULK_PATH=/PATH/TO/dsbulk-1.3.4/bin
+DATADIR=/PATH/TO/graph-book/data/ch6
 
-#
-OLDWD="`pwd`"
-SCRIPTIR="`dirname $0`"
-cd "$SCRIPTDIR"
-DATADIR="`pwd`"
+DEST_KS=neighborhoods_dev
 
-DSBULK="`which dsbulk`"
-if [ -z "$DSBULK" ]; then
-    if [ ! -f "$DSBULK_PATH/bin/dsbulk" ]; then
-        echo "Please set DSBULK_PATH variable to top-level path of DSBulk distribution"
-        echo "  or add directory with dsbulk to PATH, like, 'PATH=...dsbulk-1.3.4/bin:\$PATH'"
-        exit 1
-    fi
-fi
-
-echo "Loading vertices into the graph neighborhoods_dev"
+echo "Loading vertices into the graph $DEST_KS"
+cd $DSBULK_PATH
 
 ./dsbulk load -k neighborhoods_dev -t Transaction -url /path/to/graph-book/data/ch4/Transactions.csv -header true -schema.allowMissingFields true
 ./dsbulk load -k neighborhoods_dev -t Vendor -url /path/to/graph-book/data/ch4/Vendors.csv -header true -schema.allowMissingFields true
