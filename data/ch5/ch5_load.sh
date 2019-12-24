@@ -2,7 +2,7 @@
 
 # customizable variables
 DSBULK_PATH=/PATH/TO/dsbulk-1.3.4/bin
-DATADIR=/PATH/TO/graph-book/data/ch6
+DATADIR=/PATH/TO/graph-book/data/ch5
 
 DEST_KS=neighborhoods_prod
 
