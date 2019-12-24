@@ -2,7 +2,7 @@
 
 # customizable variables
 DSBULK_PATH=/Users/denisegosnell/Desktop/Book/dse-6.8.0_20190911-LABS/dsbulk-1.3.4/bin
-DATADIR=/Users/denisegosnell/Desktop/Book/graph-book/data/ch8
+DATADIR=/Users/denisegosnell/Desktop/Book/graph-book/data/ch9
 
 DEST_KS=paths_prod
 
