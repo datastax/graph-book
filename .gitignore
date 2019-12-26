@@ -1,2 +1,14 @@
 .DS_Store
 .idea
+Actor.csv
+Genre.csv
+Movie.csv
+Tag.csv
+User.csv
+acted_in.csv
+belongs_to.csv
+collaborator.csv
+logs/
+rated_100k_sample.csv
+tagged.csv
+topic_tag_100k_sample.csv

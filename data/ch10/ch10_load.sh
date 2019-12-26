@@ -32,7 +32,6 @@ DSBULK=$DSBULK_PATH/bin/dsbulk
 echo "Loading vertices into the graph $DEST_KS"
 
 echo "Extracting data files for loading..."
-cd $DATADIR
 tar xvzf movies_dev_data.tar.gz
 
 echo "Loading vertices into the graph $DEST_KS"

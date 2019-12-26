@@ -56,6 +56,4 @@ $DSBULK load -k neighborhoods_dev -t Transaction__pay__Vendor -url /path/to/grap
 
 echo "Completed loading edges into the graph neighborhoods_dev."
 
-cd /path/to/graph-book/data/ch4
-
 cd "$OLDWD"
