@@ -46,7 +46,7 @@ $ ./datastax-studio-6.8.0.20190912-LABS/bin/server.sh
 5. (Optional) See the DataStax Documentation for any custom configurations of [DataStax Graph](https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/graph/graphTOC.html) or [DataStax Studio](https://docs.datastax.com/en/studio/6.0/index.html). This is not necessary for using this repository of examples.
 
 Setting up DataStax Bulk Loader via a tarball:
-1. Download our Linus distribution of [DataStax Bulk Loader](https://downloads.datastax.com/#bulk-loader)
+1. Download our Linux distribution of [DataStax Bulk Loader](https://downloads.datastax.com/#bulk-loader)
 2. Untar the distribution:
 ```tar -xvzf dsbulk-1.4.1.tar.gz```
 3. Make note of the path to the top level directory of DataStax Bulk Loader.
