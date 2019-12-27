@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Please set the following variables
-DSBULK_PATH=/Users/denisegosnell/Desktop/Book/dse-6.8.0_20190911-LABS/dsbulk-1.3.4
+DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
 DEST_KS=movies_prod
 
 ############################################
@@ -32,7 +32,7 @@ DSBULK=$DSBULK_PATH/bin/dsbulk
 echo "Loading vertices into the graph $DEST_KS"
 
 echo "Extracting data files for loading..."
-tar xvzf movies_prod_shortcut.tar.gz
+tar xvzf movies_prod.tar.gz
 
 echo "Loading vertices into the graph $DEST_KS"
 $DSBULK load -k $DEST_KS -t Movie -url "$DATADIR/Movie.csv" -header true
@@ -46,6 +46,7 @@ echo "Completed loading vertices into the graph $DEST_KS."
 echo "Loading edges into the graph $DEST_KS"
 
 $DSBULK load -k $DEST_KS -t User__rated__Movie -url "$DATADIR/rated_100k_sample.csv" -header true
+$DSBULK load -k $DEST_KS -t Movie__recommend__Movie -url "$DATADIR/short_cut_edges.csv" -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 
