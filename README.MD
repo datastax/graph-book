@@ -32,7 +32,7 @@ $ unzip graph-labs-20190912.zip
 $ tar -xvzf dse-6.8.0.20190911-LABS-bin.tar.gz
 $ tar -xvzf datastax-studio-6.8.0.20190912-LABS.tar.gz
 ```
-3. Start DataStax Graph: ```
+3. Start DataStax Graph:
 ```
 $ ./dse-6.8.0.20190911-LABS/bin/dse cassandra -s -g -k
 ```
@@ -58,7 +58,6 @@ Setting up DataStax Bulk Loader via a tarball:
 5. (Optional, Proactive Step): Set the `DEFAULT_DSBULK_PATH` variable in the data loading scripts to point to the install location of DataStax Bulk Loader. All loading scripts are located in `data/ch_x/ch_x_load.sh`
 
 ## What to do next
-Let us know how you like the book and these materials! 
-1. Let us know what you think [on Twitter] (https://twitter.com/Graph_Thinking)
+1. Let us know what you think [on Twitter](https://twitter.com/Graph_Thinking)
 2. Leave our book a [review on Amazon](https://www.amazon.com/Practitioners-Guide-Graph-Data/dp/1492044075)
 
