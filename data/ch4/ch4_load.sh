@@ -1,8 +1,13 @@
 #!/bin/bash
 
-# Please set the following variables
-DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
-DEST_KS=neighborhoods_dev
+# You may set the following variables inside script, or override corresponding
+# variables when running the script
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DESK_KS=neighborhoods_dev
+
+# Allow to override these variables via environment variables set before executing script
+DSBULK_PATH=${DSBULK_PATH:-$DEFAULT_DSBULK_PATH}
+DEST_KS=${DEST_KS:-$DEFAULT_DESK_KS}
 
 ############################################
 # Automated data loading 
@@ -13,47 +18,47 @@ DEST_KS=neighborhoods_dev
 OLDWD="`pwd`"
 SCRIPTIR="`dirname $0`"
 cd "$SCRIPTDIR"
-DATADIR="`pwd`"
 
 # determine which dsbulk to use, in the case you already have it installed
-DSBULK="`which dsbulk`"
-if [ -z "$DSBULK" ]; then
-    if [ ! -f "$DSBULK_PATH/bin/dsbulk" ]; then
+# the path that is set in the script, takes over the value from PATH
+DSBULK=$DSBULK_PATH/bin/dsbulk
+if [ ! -f "$DSBULK" ]; then
+    DSBULK="`which dsbulk`"
+    if [ -z "$DSBULK" ]; then
         echo "Please set DSBULK_PATH variable to top-level path of DSBulk distribution"
         echo "  or add directory with dsbulk to PATH, like, 'PATH=...dsbulk-1.3.4/bin:\$PATH'"
         exit 1
     fi
 fi
-DSBULK=$DSBULK_PATH/bin/dsbulk
 
 ############################################
 # load the vertices
 ############################################
 echo "Loading vertices into the graph $DEST_KS"
 
-$DSBULK load -k neighborhoods_dev -t Transaction -url /path/to/graph-book/data/ch4/Transactions.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Vendor -url /path/to/graph-book/data/ch4/Vendors.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Customer -url /path/to/graph-book/data/ch4/Customers.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Loan -url /path/to/graph-book/data/ch4/Loans.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Account -url /path/to/graph-book/data/ch4/Accounts.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t CreditCard -url /path/to/graph-book/data/ch4/CreditCards.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Transaction -url Transactions.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Vendor -url Vendors.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Customer -url Customers.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Loan -url Loans.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Account -url Accounts.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t CreditCard -url CreditCards.csv -header true -schema.allowMissingFields true
 
-echo "Completed loading vertices into the graph neighborhoods_dev."
+echo "Completed loading vertices into the graph $DEST_KS."
 
 ############################################
 # load the edges
 ############################################
-echo "Loading edges into the graph neighborhoods_dev"
+echo "Loading edges into the graph $DEST_KS"
 
-$DSBULK load -k neighborhoods_dev -t Customer__owes__Loan -url /path/to/graph-book/data/ch4/owes.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Customer__owns__Account -url /path/to/graph-book/data/ch4/owns.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Customer__uses__CreditCard -url /path/to/graph-book/data/ch4/uses.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Transaction__charge__CreditCard -url /path/to/graph-book/data/ch4/charge.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Transaction__deposit_to__Account -url /path/to/graph-book/data/ch4/deposit_to.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Transaction__withdraw_from__Account -url /path/to/graph-book/data/ch4/withdraw_from.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Transaction__pay__Loan -url /path/to/graph-book/data/ch4/pay_loan.csv -header true -schema.allowMissingFields true
-$DSBULK load -k neighborhoods_dev -t Transaction__pay__Vendor -url /path/to/graph-book/data/ch4/pay_vendor.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Customer__owes__Loan -url owes.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Customer__owns__Account -url owns.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Customer__uses__CreditCard -url uses.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Transaction__charge__CreditCard -url charge.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Transaction__deposit_to__Account -url deposit_to.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Transaction__withdraw_from__Account -url withdraw_from.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Transaction__pay__Loan -url pay_loan.csv -header true -schema.allowMissingFields true
+$DSBULK load -k $DEST_KS -t Transaction__pay__Vendor -url pay_vendor.csv -header true -schema.allowMissingFields true
 
-echo "Completed loading edges into the graph neighborhoods_dev."
+echo "Completed loading edges into the graph $DEST_KS."
 
 cd "$OLDWD"
