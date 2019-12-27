@@ -1,8 +1,13 @@
 #!/bin/bash
 
-# Please set the following variables
-DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
-DEST_KS=trees_dev
+# You may set the following variables inside script, or override corresponding
+# variables when running the script
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DESK_KS=trees_dev
+
+# Allow to override these variables via environment variables set before executing script
+DSBULK_PATH=${DSBULK_PATH:-$DEFAULT_DSBULK_PATH}
+DEST_KS=${DEST_KS:-$DEFAULT_DESK_KS}
 
 ############################################
 # Automated data loading 
@@ -13,26 +18,26 @@ DEST_KS=trees_dev
 OLDWD="`pwd`"
 SCRIPTIR="`dirname $0`"
 cd "$SCRIPTDIR"
-DATADIR="`pwd`"
 
 # determine which dsbulk to use, in the case you already have it installed
-DSBULK="`which dsbulk`"
-if [ -z "$DSBULK" ]; then
-    if [ ! -f "$DSBULK_PATH/bin/dsbulk" ]; then
+# the path that is set in the script, takes over the value from PATH
+DSBULK=$DSBULK_PATH/bin/dsbulk
+if [ ! -f "$DSBULK" ]; then
+    DSBULK="`which dsbulk`"
+    if [ -z "$DSBULK" ]; then
         echo "Please set DSBULK_PATH variable to top-level path of DSBulk distribution"
         echo "  or add directory with dsbulk to PATH, like, 'PATH=...dsbulk-1.3.4/bin:\$PATH'"
         exit 1
     fi
 fi
-DSBULK=$DSBULK_PATH/bin/dsbulk
 
 ############################################
 # load the vertices
 ############################################
 echo "Loading vertices into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Sensor -url "$DATADIR/Sensor.csv" -header true
-$DSBULK load -k $DEST_KS -t Tower -url "$DATADIR/Tower.csv" -header true
+$DSBULK load -k $DEST_KS -t Sensor -url Sensor.csv -header true
+$DSBULK load -k $DEST_KS -t Tower -url Tower.csv -header true
 
 
 echo "Completed loading vertices into the graph $DEST_KS."
@@ -42,8 +47,8 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Sensor__send__Sensor -url "$DATADIR/Sensor__send__Sensor.csv" -header true
-$DSBULK load -k $DEST_KS -t Sensor__send__Tower -url "$DATADIR/Sensor__send__Tower.csv" -header true
+$DSBULK load -k $DEST_KS -t Sensor__send__Sensor -url Sensor__send__Sensor.csv -header true
+$DSBULK load -k $DEST_KS -t Sensor__send__Tower -url Sensor__send__Tower.csv -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 
