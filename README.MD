@@ -1,13 +1,15 @@
 <a href="https://g.co/kgs/pSo6dK" target="_blank"> 
-  <img src="https://raw.githubusercontent.com/datastax/graph-book/master/notebooks/images/logos/book-cover.jpg" width="250" ALIGN="RIGHT"/>
+  <img src="https://raw.githubusercontent.com/datastax/graph-book/master/notebooks/images/logos/book-cover.jpg" width="300" ALIGN="RIGHT"/>
 </a>
 You have found the repository contains the data, loading scripts, and Studio Notebooks that accompany "The Practitioners Guide to Graph Data". From our experiences, we collected a core set of choices and subsequent technology decisions to accelerate your journey with graph technology. We wrote this book and these examples to be your guide in navigating the space between understanding your data as a graph and using your data as a graph.
 
-Content Authors: 
+<br>
+
+**Content Authors:** 
 1. [Denise Gosnell](https://twitter.com/DeniseKGosnell)  
 2. [Matthias Broecheler](https://twitter.com/MBroecheler)
 
-Technical Editors:
+**Technical Editors:**
 1. [Alex Ott](https://github.com/alexott)
 2. [Lorina Poland](https://github.com/polandll)
 3. [Daniel Kuppitz](https://github.com/dkuppitz)
