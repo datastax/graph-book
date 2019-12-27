@@ -2,7 +2,7 @@
 
 # You may set the following variables inside script, or override corresponding
 # variables when running the script
-DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.4.2
 DEFAULT_DESK_KS=movies_dev
 
 # Allow to override these variables via environment variables set before executing script
@@ -40,11 +40,11 @@ echo "Extracting data files for loading..."
 tar xvzf movies_dev_data.tar.gz
 
 echo "Loading vertices into the graph $DEST_KS"
-$DSBULK load -k $DEST_KS -t Movie -url Movie.csv -header true
-$DSBULK load -k $DEST_KS -t User -url User.csv -header true
-$DSBULK load -k $DEST_KS -t Tag -url Tag.csv -header true
-$DSBULK load -k $DEST_KS -t Genre -url Genre.csv -header true
-$DSBULK load -k $DEST_KS -t Actor -url Actor.csv -header true
+$DSBULK load -g $DEST_KS -v Movie -url Movie.csv -header true
+$DSBULK load -g $DEST_KS -v User -url User.csv -header true
+$DSBULK load -g $DEST_KS -v Tag -url Tag.csv -header true
+$DSBULK load -g $DEST_KS -v Genre -url Genre.csv -header true
+$DSBULK load -g $DEST_KS -v Actor -url Actor.csv -header true
 
 echo "Completed loading vertices into the graph $DEST_KS."
 
@@ -53,12 +53,12 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Movie__belongs_to__Genre -url belongs_to.csv -header true
-$DSBULK load -k $DEST_KS -t Movie__topic_tagged__Tag -url topic_tag_100k_sample.csv -header true
-$DSBULK load -k $DEST_KS -t User__rated__Movie -url rated_100k_sample.csv -header true
-$DSBULK load -k $DEST_KS -t User__tagged__Movie -url tagged.csv -header true
-$DSBULK load -k $DEST_KS -t Actor__acted_in__Movie -url acted_in.csv -header true
-$DSBULK load -k $DEST_KS -t Actor__collaborated_with__Actor -url collaborator.csv -header true
+$DSBULK load -g $DEST_KS -e belongs_to -from Movie -to Genre -url belongs_to.csv -header true
+$DSBULK load -g $DEST_KS -e topic_tagged -from Movie -to Tag -url topic_tag_100k_sample.csv -header true
+$DSBULK load -g $DEST_KS -e rated -from User -to Movie -url rated_100k_sample.csv -header true
+$DSBULK load -g $DEST_KS -e tagged -from User -to Movie -url tagged.csv -header true
+$DSBULK load -g $DEST_KS -e acted_in -from Actor -to Movie -url acted_in.csv -header true
+$DSBULK load -g $DEST_KS -e collaborated_with -from Actor -to Actor -url collaborator.csv -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 

@@ -2,7 +2,7 @@
 
 # You may set the following variables inside script, or override corresponding
 # variables when running the script
-DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.4.2
 DEFAULT_DESK_KS=trees_dev
 
 # Allow to override these variables via environment variables set before executing script
@@ -36,8 +36,8 @@ fi
 ############################################
 echo "Loading vertices into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Sensor -url Sensor.csv -header true
-$DSBULK load -k $DEST_KS -t Tower -url Tower.csv -header true
+$DSBULK load -g $DEST_KS -v Sensor -url Sensor.csv -header true
+$DSBULK load -g $DEST_KS -v Tower -url Tower.csv -header true
 
 
 echo "Completed loading vertices into the graph $DEST_KS."
@@ -47,8 +47,8 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Sensor__send__Sensor -url Sensor__send__Sensor.csv -header true
-$DSBULK load -k $DEST_KS -t Sensor__send__Tower -url Sensor__send__Tower.csv -header true
+$DSBULK load -g $DEST_KS -e send -from Sensor -to Sensor -url Sensor__send__Sensor.csv -header true
+$DSBULK load -g $DEST_KS -e send -from Sensor -to Tower -url Sensor__send__Tower.csv -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 

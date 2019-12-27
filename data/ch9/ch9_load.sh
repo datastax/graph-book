@@ -2,7 +2,7 @@
 
 # You may set the following variables inside script, or override corresponding
 # variables when running the script
-DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.4.2
 DEFAULT_DESK_KS=paths_prod
 
 # Allow to override these variables via environment variables set before executing script
@@ -36,7 +36,7 @@ fi
 ############################################
 echo "Loading vertices into the graph $DEST_KS"
 
-$DSBULKload -k $DEST_KS -t Address -url Address.csv -header true
+$DSBULKload -g $DEST_KS -v Address -url Address.csv -header true
 
 echo "Completed loading vertices into the graph $DEST_KS."
 
@@ -45,7 +45,7 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULKload -k $DEST_KS -t Address__rated__Address -url rated.csv -header true
+$DSBULKload -g $DEST_KS -e rated -from Address -to Address -url rated.csv -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 
