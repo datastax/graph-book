@@ -3,11 +3,11 @@
 # You may set the following variables inside script, or override corresponding
 # variables when running the script
 DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.4.2
-DEFAULT_DESK_KS=movies_dev
+DEFAULT_DEST_KS=movies_dev
 
 # Allow to override these variables via environment variables set before executing script
 DSBULK_PATH=${DSBULK_PATH:-$DEFAULT_DSBULK_PATH}
-DEST_KS=${DEST_KS:-$DEFAULT_DESK_KS}
+DEST_KS=${DEST_KS:-$DEFAULT_DEST_KS}
 
 ############################################
 # Automated data loading
