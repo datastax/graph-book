@@ -16,7 +16,7 @@ DEST_KS=${DEST_KS:-$DEFAULT_DESK_KS}
 
 # collect directory variables
 OLDWD="`pwd`"
-SCRIPTIR="`dirname $0`"
+SCRIPTDIR="`dirname $0`"
 cd "$SCRIPTDIR"
 DATADIR="`pwd`"
 
