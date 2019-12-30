@@ -36,7 +36,7 @@ fi
 ############################################
 echo "Loading vertices into the graph $DEST_KS"
 
-$DSBULKload -k $DEST_KS -t Address -url Address.csv -header true
+$DSBULK load -k $DEST_KS -t Address -url Address.csv -header true
 
 echo "Completed loading vertices into the graph $DEST_KS."
 
@@ -45,7 +45,7 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULKload -k $DEST_KS -t Address__rated__Address -url rated.csv -header true
+$DSBULK load -k $DEST_KS -t Address__rated__Address -url rated.csv -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 
