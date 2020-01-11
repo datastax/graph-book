@@ -64,7 +64,7 @@ Setting up DataStax Bulk Loader via a tarball:
     1. Import each chapter notebook into DataStax Studio
     2. Create each graph and graph's schema via the chapter's notebook
     3. Update the DEFAULT_DSBULK_PATH within each chapter's loading file. (All loading scripts are located in `data/ch_x/ch_x_load.sh`)
-    4. Run the `load_all.sh` script to load all data into each graph.
+    4. Run the `data/load_all.sh` script to load all data into each graph.
 6. Enjoy your reading!
 
 ## What to do next
