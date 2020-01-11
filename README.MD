@@ -59,8 +59,13 @@ Setting up DataStax Bulk Loader via a tarball:
 1. Clone this repository: `git clone git@github.com:datastax/graph-book.git`
 2. With DataStax Studio running, go to the [DataStax Studio Home Page](http://localhost:9091/)
 3. Upload the Chapter notebook you want to use via the Notebook Upload Tool
-4. Follow the directions in the Notebook!
-5. (Optional, Proactive Step): Set the `DEFAULT_DSBULK_PATH` variable in the data loading scripts to point to the install location of DataStax Bulk Loader. All loading scripts are located in `data/ch_x/ch_x_load.sh`
+4. Follow the directions in the Notebook.
+5. (Optional) Set up all chapter examples at once:
+    1. Import each chapter notebook into DataStax Studio
+    2. Create each graph and graph's schema via the chapter's notebook
+    3. Update the DEFAULT_DSBULK_PATH within each chapter's loading file. (All loading scripts are located in `data/ch_x/ch_x_load.sh`)
+    4. Run the `load_all.sh` script to load all data into each graph.
+6. Enjoy your reading!
 
 ## What to do next
 1. Let us know what you think [on Twitter](https://twitter.com/Graph_Thinking)
