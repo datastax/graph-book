@@ -24,10 +24,21 @@ This repository contains Studio Notebooks, data, and loading scripts to follow t
 
 The directions below detail how to get started.
 
-## Getting Started
+## How to use this repository
+1. Clone this repository: `git clone git@github.com:datastax/graph-book.git`
+2. With DataStax and DataStax Studio [installed and running](#downloading-datastax-graph-and-datastax-studio), go to the [DataStax Studio Home Page](http://localhost:9091/)
+3. Upload the Chapter notebook you want to use via the Notebook Upload Tool
+4. Follow the directions in the Notebook.
+5. (Optional) Set up all chapter examples at once:
+    1. Import each chapter notebook into DataStax Studio
+    2. Create each graph and graph's schema via the chapter's notebook
+    3. Update the DEFAULT_DSBULK_PATH within each chapter's loading file. (All loading scripts are located in `data/ch_x/ch_x_load.sh`)
+    4. Run the `data/load_all.sh` script to load all data into each graph.
+6. Enjoy your reading!
+
+## Downloading DataStax Graph and DataStax Studio
 
 You will need to download and configure two DataStax products to use this repository: DataStax Graph 6.8 with DataStax Studio and DataStax Bulk Loader
-
 
 Setting Up DataStax Graph 6.8 via a tarball:
 1. Download our Linux distrubition of [DataStax Graph 6.8 with DataStax Studio](https://downloads.datastax.com/#labs)
@@ -53,19 +64,6 @@ Setting up DataStax Bulk Loader via a tarball:
 ```tar -xvzf dsbulk-1.4.1.tar.gz```
 3. Make note of the path to the top level directory of DataStax Bulk Loader.
 4. (Optional) See the [DataStax Documentation](https://docs.datastax.com/en/dsbulk/doc/) for any custom configurations of DataStax Bulk Loader. This is not necessary for using this repository of examples.
-
-
-## How to use this repository
-1. Clone this repository: `git clone git@github.com:datastax/graph-book.git`
-2. With DataStax Studio running, go to the [DataStax Studio Home Page](http://localhost:9091/)
-3. Upload the Chapter notebook you want to use via the Notebook Upload Tool
-4. Follow the directions in the Notebook.
-5. (Optional) Set up all chapter examples at once:
-    1. Import each chapter notebook into DataStax Studio
-    2. Create each graph and graph's schema via the chapter's notebook
-    3. Update the DEFAULT_DSBULK_PATH within each chapter's loading file. (All loading scripts are located in `data/ch_x/ch_x_load.sh`)
-    4. Run the `data/load_all.sh` script to load all data into each graph.
-6. Enjoy your reading!
 
 ## What to do next
 1. Let us know what you think [on Twitter](https://twitter.com/Graph_Thinking)
