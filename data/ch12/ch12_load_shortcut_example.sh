@@ -2,7 +2,7 @@
 
 # You may set the following variables inside script, or override corresponding
 # variables when running the script
-DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.4.2
 DEFAULT_DEST_KS=movies_prod
 
 # Allow to override these variables via environment variables set before executing script
@@ -40,8 +40,8 @@ echo "Extracting data files for loading..."
 tar xvzf movies_prod_shortcut.tar.gz
 
 echo "Loading vertices into the graph $DEST_KS"
-$DSBULK load -k $DEST_KS -t Movie -url Movie.csv -header true
-$DSBULK load -k $DEST_KS -t User -url User.csv -header true
+$DSBULK load -g $DEST_KS -v Movie -url Movie.csv -header true
+$DSBULK load -g $DEST_KS -v User -url User.csv -header true
 
 echo "Completed loading vertices into the graph $DEST_KS."
 
@@ -50,7 +50,7 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t User__rated__Movie -url rated_100k_sample.csv -header true
+$DSBULK load -g $DEST_KS -e rated -from User -to Movie -url rated_100k_sample.csv -header true
 
 echo "Completed loading edges into the graph $DEST_KS."
 

@@ -2,7 +2,7 @@
 
 # You may set the following variables inside script, or override corresponding
 # variables when running the script
-DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.3.4
+DEFAULT_DSBULK_PATH=/PATH/TO/dsbulk-1.4.2
 DEFAULT_DEST_KS=neighborhoods_dev
 
 # Allow to override these variables via environment variables set before executing script
@@ -36,12 +36,12 @@ fi
 ############################################
 echo "Loading vertices into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Transaction -url Transactions.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Vendor -url Vendors.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Customer -url Customers.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Loan -url Loans.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Account -url Accounts.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t CreditCard -url CreditCards.csv -header true -schema.allowMissingFields true
+$DSBULK load -g $DEST_KS -v Transaction -url Transactions.csv -header true 
+$DSBULK load -g $DEST_KS -v Vendor -url Vendors.csv -header true 
+$DSBULK load -g $DEST_KS -v Customer -url Customers.csv -header true 
+$DSBULK load -g $DEST_KS -v Loan -url Loans.csv -header true 
+$DSBULK load -g $DEST_KS -v Account -url Accounts.csv -header true 
+$DSBULK load -g $DEST_KS -v CreditCard -url CreditCards.csv -header true 
 
 echo "Completed loading vertices into the graph $DEST_KS."
 
@@ -50,14 +50,14 @@ echo "Completed loading vertices into the graph $DEST_KS."
 ############################################
 echo "Loading edges into the graph $DEST_KS"
 
-$DSBULK load -k $DEST_KS -t Customer__owes__Loan -url owes.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Customer__owns__Account -url owns.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Customer__uses__CreditCard -url uses.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Transaction__charge__CreditCard -url charge.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Transaction__deposit_to__Account -url deposit_to.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Transaction__withdraw_from__Account -url withdraw_from.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Transaction__pay__Loan -url pay_loan.csv -header true -schema.allowMissingFields true
-$DSBULK load -k $DEST_KS -t Transaction__pay__Vendor -url pay_vendor.csv -header true -schema.allowMissingFields true
+$DSBULK load -g $DEST_KS -e owes -from Customer -to Loan -url owes.csv -header true 
+$DSBULK load -g $DEST_KS -e owns -from Customer -to Account -url owns.csv -header true 
+$DSBULK load -g $DEST_KS -e uses -from Customer -to CreditCard -url uses.csv -header true 
+$DSBULK load -g $DEST_KS -e charge -from Transaction -to CreditCard -url charge.csv -header true 
+$DSBULK load -g $DEST_KS -e deposit_to -from Transaction -to Account -url deposit_to.csv -header true 
+$DSBULK load -g $DEST_KS -e withdraw_from -from Transaction -to Account -url withdraw_from.csv -header true 
+$DSBULK load -g $DEST_KS -e pay -from Transaction -to Loan -url pay_loan.csv -header true 
+$DSBULK load -g $DEST_KS -e pay -from Transaction -to Vendor -url pay_vendor.csv -header true 
 
 echo "Completed loading edges into the graph $DEST_KS."
 
