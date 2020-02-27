@@ -1,0 +1,18 @@
+version: "2"
+services:
+  dse:
+    image: "crwstax/graph-book:0.0.1"
+    command: -s -k -g
+    environment:
+      - DS_LICENSE=accept
+    ports:
+      - 9042:9042
+      - 8182:8182
+  studio:
+    image: "crwstax/graph-book-studio:0.0.1"
+    environment:
+      - DS_LICENSE=accept
+      - STUDIO_DEFAULT_CONNECTION_HOST=host.docker.internal
+      - STUDIO_DEFAULT_CONNECTION_NAME=Docker
+    ports:
+      - 9091:9091
