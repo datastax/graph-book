@@ -1,7 +1,7 @@
 <a href="https://g.co/kgs/pSo6dK" target="_blank"> 
   <img src="https://raw.githubusercontent.com/datastax/graph-book/master/notebooks/images/logos/book-cover.jpg" width="300" ALIGN="RIGHT"/>
 </a>
-You have found the repository contains the data, loading scripts, and Studio Notebooks that accompany "The Practitioners Guide to Graph Data". We wrote this book and created these examples to be your guide in navigating the space between understanding your data as a graph and using your data as a graph. 
+You have found the repository containing the data, loading scripts, and Studio Notebooks that accompany "The Practitioners Guide to Graph Data". We wrote this book and created these examples to be your guide in navigating the space between understanding your data as a graph and using your data as a graph. 
 
 You are also welcome to copy and reuse (with citation) all images from our [public LucidCharts documents](https://www.lucidchart.com/invitations/accept/ac590bc4-1407-422b-9843-bda83e0d0b6c).
 
