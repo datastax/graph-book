@@ -12,3 +12,4 @@ logs/
 rated_100k_sample.csv
 tagged.csv
 topic_tag_100k_sample.csv
+docker

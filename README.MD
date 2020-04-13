@@ -24,6 +24,13 @@ This repository contains Studio Notebooks, data, and loading scripts to follow t
 
 The directions below detail how to get started.
 
+## Docker Quickstart
+1. Make sure you have [Docker and docker-compose](https://www.docker.com/) and [git](https://git-scm.com/) installed
+2. Make sure you are giving Docker enough system resources (we recommend 8GB or more of RAM).
+3. Clone this repository: `git clone git@github.com:datastax/graph-book.git`
+4. Enter the project directory and run `docker-compose up`
+5. When both the Studio and DSE services are running, head over to the [DataStax Studio Home Page](http://localhost:9091/) in your browser and you can start using Notebooks that are setup for each chapter.
+
 ## How to use this repository
 1. Clone this repository: `git clone git@github.com:datastax/graph-book.git`
 2. With DataStax and DataStax Studio [installed and running](#downloading-datastax-graph-and-datastax-studio), go to the [DataStax Studio Home Page](http://localhost:9091/)
