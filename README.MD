@@ -48,27 +48,26 @@ The directions below detail how to get started.
 You will need to download and configure two DataStax products to use this repository: DataStax Graph 6.8 with DataStax Studio and DataStax Bulk Loader
 
 Setting Up DataStax Graph 6.8 via a tarball:
-1. Download our Linux distrubition of [DataStax Graph 6.8 with DataStax Studio](https://downloads.datastax.com/#labs)
+1. Download our distrubition of [DataStax Graph 6.8](https://downloads.datastax.com/#enterprise) and [DataStax Studio](https://downloads.datastax.com/#studio)
 2. From your terminal, untar the distributions of DataStax Graph 6.8 and DataStax Studio
 ```
-$ unzip graph-labs-20190912.zip 
-$ tar -xvzf dse-6.8.0.20190911-LABS-bin.tar.gz
-$ tar -xvzf datastax-studio-6.8.0.20190912-LABS.tar.gz
+$ tar -xvzf dse-6.8.0-bin.tar.gz
+$ tar -xvzf datastax-studio-6.8.0.tar.gz
 ```
 3. Start DataStax Graph:
 ```
-$ ./dse-6.8.0.20190911-LABS/bin/dse cassandra -s -g -k
+$ ./dse-6.8.0/bin/dse cassandra -s -g -k
 ```
 4. Start DataStax Studio:
 ```
-$ ./datastax-studio-6.8.0.20190912-LABS/bin/server.sh
+$ ./datastax-studio-6.8.0/bin/server.sh
 ```
-5. (Optional) See the DataStax Documentation for any custom configurations of [DataStax Graph](https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/graph/graphTOC.html) or [DataStax Studio](https://docs.datastax.com/en/studio/6.0/index.html). This is not necessary for using this repository of examples.
+5. (Optional) See the DataStax Documentation for any custom configurations of [DataStax Graph](https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/graph/graphTOC.html) or [DataStax Studio](https://docs.datastax.com/en/studio/6.8/index.html). This is not necessary for using this repository of examples.
 
 Setting up DataStax Bulk Loader via a tarball:
 1. Download our Linux distribution of [DataStax Bulk Loader](https://downloads.datastax.com/#bulk-loader)
 2. Untar the distribution:
-```tar -xvzf dsbulk-1.4.1.tar.gz```
+```tar -xvzf dsbulk-1.5.0.tar.gz```
 3. Make note of the path to the top level directory of DataStax Bulk Loader.
 4. (Optional) See the [DataStax Documentation](https://docs.datastax.com/en/dsbulk/doc/) for any custom configurations of DataStax Bulk Loader. This is not necessary for using this repository of examples.
 
